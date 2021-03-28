@@ -1,34 +1,41 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include <bitset>
-using namespace std;
-namespace cf { //compare functions.
-    /*
-     * Function checks, is point better than other one
-     * in ALL parameters. Works only for ALLMAX and ALLMIN cases
-     */
-    template<typename T>
-    bool TwoElcmp (vector<T>& lhv, vector<T>& rhv) {
-        bool are_all_more = (lhv[0] >=rhv[0]); // >= because if all criteria will be equal, point also not better
-        for (int i = 0;i < lhv.size();i++) {
-            if ((lhv[i] >= rhv[i]) != are_all_more) {
-                /*it means, that one part of v1
-                 * is more than v2 and other part
-                 * is less. Therefore, points are
-                 * incomparable*/
-                return true;
-            }
+#include "pf.h"
+template<typename T>
+void printmultitude(const std::list<std::vector<T>>& to_print) {
+    std::cout<<"Pareto multitude:"<<std::endl;
+    auto it = to_print.begin();
+    for(int i=0;i<to_print.size();i++) {
+        for(int j=0; j<to_print.begin()->size();j++) {
+            std::cout<<(*it)[j]<<" ";
         }
-        // all elements are more or less => comparable
-        return false;
+        std::cout<<std::endl;
+        ++it;
     }
 }
-
 int main() {
-    vector<int> v1 = {1,3,3,4,5};
-    vector<int> v2 = {3,1,4,5,6};
-    std::cout<<cf::TwoElcmp(v1,v2);
+
+    std::cout<<"Enter number of parameters for each object"<<std::endl;
+    int vectorSize;
+    std::cin>>vectorSize;
+    std::cout<<"Enter number of objects"<<std::endl;
+    int listSize;
+    std::cin>>listSize;
+    std::list<std::vector<int>> base(listSize);
+    auto listIt = base.begin();
+    for(int i=0;i<listSize;i++) {
+        std::cout<<"Enter parameters of object "<<i+1<<std::endl;
+        for(int j=0;j<vectorSize;j++) {
+            int tmp;
+            std::cin>>tmp;
+            (*listIt).push_back(tmp);
+        }
+        ++listIt;
+    }
+    std::cout<<std::endl;
+    auto Pareto = pf::find_and_alloc_Pareto(base);
+    printmultitude(Pareto);
     return 0;
 }
 
