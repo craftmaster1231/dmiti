@@ -57,12 +57,15 @@ Enter number of objects
 Enter parameters of object 1
 
 1 2 3
+
 Enter parameters of object 2
 
 3 2 1
+
 Enter parameters of object 3
 
 1 1 1
+
 Enter parameters of object 4
 
 2 2 5
