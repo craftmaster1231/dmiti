@@ -68,6 +68,7 @@ Enter parameters of object 5
 Pareto multitude:
 
 2 2 5 
+
 5 2 2 
 
 ---
