@@ -13,6 +13,7 @@ namespace pf { //Functions for Pareto multitude.
      * if lhv is better - returns true.
      * if incomparable  - returns true
      * if worse         - returns false
+     * if same          - returns true
      */
     template<typename T>
     bool check (const std::vector<T>& lhv, const std::vector<T>& rhv) {
@@ -30,13 +31,16 @@ namespace pf { //Functions for Pareto multitude.
             if(lhv[i]<rhv[i]) {
                 element_less = true;
             }
-            if(element_less & element_more) {
+            if(!element_less && !element_more) {
                 return true; //lhv and rhv are incomparable;
             }
         }
         /* if rhv and lhv are incomparable, it will be known in cycle.
-         * So, lhv is only better or worse than rhv.
+         * So, lhv is only better, worse or equal than rhv.
          */
+        if(element_less && element_more){
+            return true;
+        }
         if(element_more && !element_less) {
             return true; // lhv is better
         }
@@ -58,7 +62,6 @@ namespace pf { //Functions for Pareto multitude.
                 }
                 if(!check(*current,*tocmp)) {
                     is_in_miltitude = false;
-                    ++tocmp;
                     break;
                 }
                 ++tocmp;
