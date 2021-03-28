@@ -35,3 +35,29 @@
 
 Таким образом, у меня останутся только те точки, которые
 входят в множество Парето.
+
+## Работа первой программы
+---
+
+
+Enter number of parameters for each object
+3
+Enter number of objects
+5
+Enter parameters of object 1
+1 2 3
+Enter parameters of object 2
+3 2 1
+Enter parameters of object 3
+1 1 1
+Enter parameters of object 4
+2 2 5
+Enter parameters of object 5
+5 2 2
+
+Pareto multitude:
+
+2 2 5 
+5 2 2 
+
+---
