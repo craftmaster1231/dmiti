@@ -3,27 +3,28 @@
 #include <vector>
 #include <bitset>
 using namespace std;
-namespace cf { //compare functions
+namespace cf { //compare functions.
     template<typename T>
-    bool TwoElcmp (vector<T>& lhv, vector<T>& rhv, int size) { //for maxmax or minmin only
-        bool are_all_more = (lhv[0] >=
-                             rhv[0]); // >= because if all criteria will be equal, point will be good for multitude
-        for (int i = 0;i < size;i++) {
-            if (lhv[0] >= rhv[0] != are_all_more) {
+    bool TwoElcmp (vector<T>& lhv, vector<T>& rhv) { //for maxmax or minmin only
+        bool are_all_more = (lhv[0] >=rhv[0]); // >= because if all criteria will be equal, point also in multitude
+        for (int i = 0;i < lhv.size();i++) {
+            if ((lhv[i] >= rhv[i]) != are_all_more) {
                 /*it means, that one part of v1
-                 * is more and other part
+                 * is more than v2 and other part
                  * is less. Therefore, points are
                  * incomparable*/
                 return true;
             }
         }
-        return false;
         // all elements are more or less => comparable
+        return false;
     }
 }
 
 int main() {
-
+    vector<int> v1 = {1,3,3,4,5};
+    vector<int> v2 = {3,1,4,5,6};
+    std::cout<<cf::TwoElcmp(v1,v2);
     return 0;
 }
 
