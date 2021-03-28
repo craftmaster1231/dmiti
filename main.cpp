@@ -4,9 +4,13 @@
 #include <bitset>
 using namespace std;
 namespace cf { //compare functions.
+    /*
+     * Function checks, is point better than other one
+     * in ALL parameters. Works only for ALLMAX and ALLMIN cases
+     */
     template<typename T>
-    bool TwoElcmp (vector<T>& lhv, vector<T>& rhv) { //for maxmax or minmin only
-        bool are_all_more = (lhv[0] >=rhv[0]); // >= because if all criteria will be equal, point also in multitude
+    bool TwoElcmp (vector<T>& lhv, vector<T>& rhv) {
+        bool are_all_more = (lhv[0] >=rhv[0]); // >= because if all criteria will be equal, point also not better
         for (int i = 0;i < lhv.size();i++) {
             if ((lhv[i] >= rhv[i]) != are_all_more) {
                 /*it means, that one part of v1
