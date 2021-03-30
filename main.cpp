@@ -21,7 +21,7 @@ int main() {
         }
         ++listIt;
     }
-    std::cout<<std::endl;
+    base.sort();
     auto Pareto = pf::find_and_alloc_Pareto(base);
     std::cout<<"Pareto multitude: \t"<<std::endl;
     pf::printmultitude(Pareto);

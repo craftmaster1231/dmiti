@@ -20,7 +20,6 @@ namespace pf { //Functions to work with Pareto multitude.
         if(lhv.size() != rhv.size()) {
             std::cout<<"check() different sizes!"<<std::endl; //debug thing
         }
-        std::move(5);
         bool element_more=false;    //do we found that any lhv[i] > rhv[i]
         bool element_less=false;    //do we found that any lhv[i] < rhv[i]
         int size = lhv.size();
@@ -54,9 +53,10 @@ namespace pf { //Functions to work with Pareto multitude.
         auto current = base.begin();
         auto tocmp = base.begin();
         auto retn = new std::list<std::vector<T>>;
-        for(int i=0; i<base.size();i++) {
+        const int list_size = base.size();
+        for(int i=0; i<list_size;i++) {
             bool is_in_miltitude = true;
-            for(int j=0; j<base.size();j++) {
+            for(int j=0; j<list_size;j++) {
                 if(i==j) {
                     ++tocmp;
                     continue;
@@ -83,9 +83,11 @@ namespace pf { //Functions to work with Pareto multitude.
             return;
         }
         auto it = multitude_to_print.begin();
-        for(int i=0;i < multitude_to_print.size();i++) {
+        const int list_size = multitude_to_print.size();
+        const int vec_size = multitude_to_print.begin()->size();
+        for(int i=0;i < list_size;i++) {
             std::cout<<"Object:\t";
-            for(int j=0;j < multitude_to_print.begin()->size();j++) {
+            for(int j=0;j < vec_size;j++) {
                 std::cout<<(*it)[j]<<" ";
             }
             std::cout<<std::endl;
@@ -93,5 +95,19 @@ namespace pf { //Functions to work with Pareto multitude.
         }
         std::cout<<std::endl;
     }
+    template<typename T>
+    bool operator>(const std::vector<T>& v1, const std::vector<T>& v2) { //function for std::qsort
+        int v1_mod=0;
+        const int vec_size = v1.size();
+        for(int i=0;i<vec_size;i++) {
+            v1_mod+= v1[i]*v1[i];
+        }
+        int v2_mod =0;
+        for(int i=0;i<vec_size;i++) {
+            v2_mod+=v2[i]*v2[i];
+        }
+        return v1>v2;
+    }
 }
+
 #endif //DMITITOCOPY_PF_H
