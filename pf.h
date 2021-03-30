@@ -20,6 +20,7 @@ namespace pf { //Functions to work with Pareto multitude.
         if(lhv.size() != rhv.size()) {
             std::cout<<"check() different sizes!"<<std::endl; //debug thing
         }
+        std::move(5);
         bool element_more=false;    //do we found that any lhv[i] > rhv[i]
         bool element_less=false;    //do we found that any lhv[i] < rhv[i]
         int size = lhv.size();
@@ -49,7 +50,7 @@ namespace pf { //Functions to work with Pareto multitude.
     }
 
     template<typename T>
-    std::list<std::vector<T>>&& find_and_alloc_Pareto(const std::list<std::vector<T>>& base ) {
+    std::list<std::vector<T>>&& find_and_alloc_Pareto(const std::list<std::vector<T>>& base) {
         auto current = base.begin();
         auto tocmp = base.begin();
         auto retn = new std::list<std::vector<T>>;
@@ -76,12 +77,15 @@ namespace pf { //Functions to work with Pareto multitude.
     }
 
     template<typename T>
-    void printmultitude(const std::list<std::vector<T>>& to_print) {
-        std::cout<<"Pareto multitude:"<<std::endl;
-        auto it = to_print.begin();
-        for(int i=0;i<to_print.size();i++) {
+    void printmultitude(const std::list<std::vector<T>>& multitude_to_print) {
+        if(multitude_to_print.size() == 0) {
+            std::cout<<"multitude is free!"<<std::endl;
+            return;
+        }
+        auto it = multitude_to_print.begin();
+        for(int i=0;i < multitude_to_print.size();i++) {
             std::cout<<"Object:\t";
-            for(int j=0; j<to_print.begin()->size();j++) {
+            for(int j=0;j < multitude_to_print.begin()->size();j++) {
                 std::cout<<(*it)[j]<<" ";
             }
             std::cout<<std::endl;
