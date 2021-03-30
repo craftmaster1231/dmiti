@@ -7,12 +7,14 @@ void printmultitude(const std::list<std::vector<T>>& to_print) {
     std::cout<<"Pareto multitude:"<<std::endl;
     auto it = to_print.begin();
     for(int i=0;i<to_print.size();i++) {
+        std::cout<<"Object:\t";
         for(int j=0; j<to_print.begin()->size();j++) {
             std::cout<<(*it)[j]<<" ";
         }
         std::cout<<std::endl;
         ++it;
     }
+    std::cout<<std::endl;
 }
 int main() {
 

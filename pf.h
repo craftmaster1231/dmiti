@@ -49,7 +49,7 @@ namespace pf { //Functions for Pareto multitude.
     }
 
     template<typename T>
-    std::list<std::vector<T>>& find_and_alloc_Pareto(const std::list<std::vector<T>>& base ) {
+    std::list<std::vector<T>>&& find_and_alloc_Pareto(const std::list<std::vector<T>>& base ) {
         auto current = base.begin();
         auto tocmp = base.begin();
         auto retn = new std::list<std::vector<T>>;
@@ -72,7 +72,7 @@ namespace pf { //Functions for Pareto multitude.
             tocmp = base.begin();
             ++current;
         }
-        return *retn;
+        return std::move(*retn);
     }
 }
 #endif //DMITITOCOPY_PF_H
