@@ -95,19 +95,23 @@ namespace pf { //Functions to work with Pareto multitude.
         }
         std::cout<<std::endl;
     }
-    template<typename T>
-    bool operator>(const std::vector<T>& v1, const std::vector<T>& v2) { //function for std::qsort
-        int v1_mod=0;
-        const int vec_size = v1.size();
-        for(int i=0;i<vec_size;i++) {
-            v1_mod+= v1[i]*v1[i];
-        }
-        int v2_mod =0;
-        for(int i=0;i<vec_size;i++) {
-            v2_mod+=v2[i]*v2[i];
-        }
-        return v1>v2;
-    }
 }
+template<typename T>
+class vec_Comparator {
+private:
+    int module(const std::vector<T>& val) {
+        T mod = {};
+        const int vec_size = val.size();
+        for (int i = 0; i < vec_size; i++) {
+            mod += val[i] * val[i];
+        }
+        return mod;
+    }
+public:
+    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
+        return module(lhv) > module(rhv);
+    }
+};
+
 
 #endif //DMITITOCOPY_PF_H

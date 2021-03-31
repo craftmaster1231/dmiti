@@ -19,9 +19,8 @@ int main() {
             std::cin>>tmp;
             (*listIt).push_back(tmp);
         }
-        ++listIt;
-    }
-    base.sort();
+        ++listIt;}
+    base.sort(vec_Comparator<int>());
     auto Pareto = pf::find_and_alloc_Pareto(base);
     std::cout<<"Pareto multitude: \t"<<std::endl;
     pf::printmultitude(Pareto);
