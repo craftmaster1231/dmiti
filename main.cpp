@@ -10,16 +10,17 @@ int main() {
     std::cout<<"Enter number of objects"<<std::endl;
     int listSize;
     std::cin>>listSize;
-    std::list<std::vector<int>> base(listSize);
+    std::list<std::vector<double>> base(listSize);
     auto listIt = base.begin();
     for(int i=0;i<listSize;i++) {
         std::cout<<"Enter parameters of object "<<i+1<<std::endl;
         for(int j=0;j<vectorSize;j++) {
-            int tmp;
+            double tmp;
             std::cin>>tmp;
             (*listIt).push_back(tmp);
         }
-        ++listIt;}
+        ++listIt;
+    }
     base.sort(vec_Comparator<int>());
     auto Pareto = pf::find_and_alloc_Pareto(base);
     std::cout<<"Pareto multitude: \t"<<std::endl;

@@ -96,10 +96,11 @@ namespace pf { //Functions to work with Pareto multitude.
         std::cout<<std::endl;
     }
 }
+
 template<typename T>
 class vec_Comparator {
 private:
-    int module(const std::vector<T>& val) {
+    T& module(const std::vector<T>& val) {
         T mod = {};
         const int vec_size = val.size();
         for (int i = 0; i < vec_size; i++) {
@@ -108,9 +109,15 @@ private:
         return mod;
     }
 public:
-    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
-        return module(lhv) > module(rhv);
+    bool comp(const std::vector<T>& lhv, const std::vector<T>& rhv){
+        return module(lhv) > module(lhv);
     }
+    bool equiv(const std::vector<T>& lhv, const std::vector<T>& rhv) {
+        return module(lhv) == module(lhv);
+    }
+//    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
+//        return module(lhv) > module(rhv);
+//    }
 };
 
 
