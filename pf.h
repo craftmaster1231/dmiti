@@ -109,15 +109,9 @@ private:
         return mod;
     }
 public:
-    bool comp(const std::vector<T>& lhv, const std::vector<T>& rhv){
-        return module(lhv) > module(lhv);
+    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
+        return module(lhv) > module(rhv);
     }
-    bool equiv(const std::vector<T>& lhv, const std::vector<T>& rhv) {
-        return module(lhv) == module(lhv);
-    }
-//    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
-//        return module(lhv) > module(rhv);
-//    }
 };
 
 

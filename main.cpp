@@ -10,7 +10,7 @@ int main() {
     std::cout<<"Enter number of objects"<<std::endl;
     int listSize;
     std::cin>>listSize;
-    std::list<std::vector<double>> base(listSize);
+    std::list<std::vector<int>> base(listSize);
     auto listIt = base.begin();
     for(int i=0;i<listSize;i++) {
         std::cout<<"Enter parameters of object "<<i+1<<std::endl;
