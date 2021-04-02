@@ -15,16 +15,16 @@ int main() {
     for(int i=0;i<listSize;i++) {
         std::cout<<"Enter parameters of object "<<i+1<<std::endl;
         for(int j=0;j<vectorSize;j++) {
-            double tmp;
+            int tmp;
             std::cin>>tmp;
             (*listIt).push_back(tmp);
         }
         ++listIt;
     }
+
     base.sort(vec_Comparator<int>());
     auto Pareto = pf::find_and_alloc_Pareto(base);
     std::cout<<"Pareto multitude: \t"<<std::endl;
     pf::printmultitude(Pareto);
     return 0;
 }
-
