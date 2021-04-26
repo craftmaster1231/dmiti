@@ -3,7 +3,7 @@
 #include <vector>
 #include "pf.h"
 int main() {
-    std::cout<<"Enter number of parameters for each object"<<std::endl;
+    std::cout<<"Enter number of parame ters for each object"<<std::endl;
     int vectorSize;
     std::cin>>vectorSize;
     std::cout<<std::endl;
