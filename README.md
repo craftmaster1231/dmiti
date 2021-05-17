@@ -201,7 +201,7 @@ Object:	4 6
 
 Имеем такие объекты с параметрами:
 
-![image](/images/second_program_mulp.png)
+![image](/images/second_program_mult.png)
 
 Для удобства нашего представления инвертирую знак у MIN параметра (он один) и буду работать с множество, как будто случай ALLMAX.
 
@@ -209,4 +209,4 @@ Object:	4 6
 
 После инвертирования знаков получаем следующую картину:
 
-![image](/images/second_program_mulp_sym.png)
+![image](/images/second_program_mult_sym.png)
