@@ -49,36 +49,36 @@ namespace pf { //Functions to work with Pareto multitude.
     }
 
     template<typename T>
-    std::list<std::vector<T>>&& find_and_alloc_Pareto(const std::list<std::vector<T>>& base) {
+    std::list<std::vector<T>> find_Pareto(const std::list<std::vector<T>>& base) {
         auto current = base.begin();
         auto tocmp = base.begin();
-        auto retn = new std::list<std::vector<T>>;
+        std::list<std::vector<T>> retn;
         const int list_size = base.size();
         for(int i=0; i<list_size;i++) {
-            bool is_in_miltitude = true;
+            bool is_in_multitude = true;
             for(int j=0; j<list_size;j++) {
                 if(i==j) {
                     ++tocmp;
                     continue;
                 }
                 if(!check(*current,*tocmp)) {
-                    is_in_miltitude = false;
+                    is_in_multitude = false;
                     break;
                 }
                 ++tocmp;
             }
-            if(is_in_miltitude){
-                retn->push_back(std::vector<T>{*current});
+            if(is_in_multitude){
+                retn.push_back(std::vector<T>{*current});
             }
             tocmp = base.begin();
             ++current;
         }
-        return std::move(*retn);
+        return retn;
     }
 
     template<typename T>
     void printmultitude(const std::list<std::vector<T>>& multitude_to_print) {
-        if(multitude_to_print.size() == 0) {
+        if(multitude_to_print.empty()) {
             std::cout<<"multitude is free!"<<std::endl;
             return;
         }
@@ -97,22 +97,6 @@ namespace pf { //Functions to work with Pareto multitude.
     }
 }
 
-template<typename T>
-class vec_Comparator {
-private:
-    T& module(const std::vector<T>& val) {
-        T mod = {};
-        const int vec_size = val.size();
-        for (int i = 0; i < vec_size; i++) {
-            mod += val[i] * val[i];
-        }
-        return mod;
-    }
-public:
-    bool operator()(const std::vector<T>& lhv, const std::vector<T>& rhv) {
-        return module(lhv) > module(rhv);
-    }
-};
 
 
 #endif //DMITITOCOPY_PF_H
