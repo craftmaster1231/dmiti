@@ -170,4 +170,43 @@ Pareto multitude:
 ![image](/images/bigger_module_is_not_better.png)
 
 
+### Теперь программа может находить множество Парето для ALL и MAX критериев в любых количествах и комбинациях
 
+Пример работы:
+
+```
+Enter number of parameters for each object
+2
+
+Enter number of objects
+5
+Enter MIN and MAX mask
+MIN MAX
+Enter parameters of object 1
+4 6
+Enter parameters of object 2
+7 6
+Enter parameters of object 3
+4 5
+Enter parameters of object 4
+1 3
+Enter parameters of object 5
+4 6
+Pareto multitude: 	
+Object:	4 6 
+Object:	1 3 
+Object:	4 6 
+```
+##### Графическое представление происходящего:
+
+Имеем такие объекты с параметрами:
+
+![image](/images/second_program_mulp.png)
+
+Для удобства нашего представления инвертирую знак у MIN параметра (он один) и буду работать с множество, как будто случай ALLMAX.
+
+Кстати, также происходит и в программе, но уже по соображениям алгоритмической красоты.
+
+После инвертирования знаков получаем следующую картину:
+
+![image](/images/second_program_mulp_sym.png)
